@@ -1,37 +1,50 @@
 <%= form_for(user) do |f| %>
-  <% if user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
+    
 
-      <ul>
-      <% user.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+<div class="row">
+    <div class="col-md-12">
+        <% if user.errors.any? %>
+            <div class="alert alert-danger">
+                <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+                <ul>
+                    <% user.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                    <% end %>
+                </ul>
+            </div>
+        <% end %>
     </div>
-  <% end %>
+    <div class="col-md-6 col-md-offset-3">
+        <div class="form-group">
+            <%= f.label :email, class: "form-label" %>
+            <%= f.text_field :email, class: "form-control" %>
+        </div>
 
-  <div class="field">
-    <%= f.label :email %>
-    <%= f.text_field :email %>
-  </div>
+        <div class="form-group">
+            <%= f.label :nombres, class: "form-label" %>
+            <%= f.text_field :nombres, class: "form-control" %>
+        </div>
 
-  <div class="field">
-    <%= f.label :password %>
-    <%= f.text_field :password %>
-  </div>
+        <div class="form-group">
+            <%= f.label :apellidos, class: "form-label" %>
+            <%= f.text_field :apellidos, class: "form-control" %>
+        </div>
 
-  <div class="field">
-    <%= f.label :nombres %>
-    <%= f.text_field :nombres %>
-  </div>
+        <div class="form-group">
+            <%= f.label :password, class: "form-label" %>
+            <%= f.password_field :password, class: "form-control"  %>
+        </div>
 
-  <div class="field">
-    <%= f.label :apellidos %>
-    <%= f.text_field :apellidos %>
-  </div>
+        <div class="form-group">
+            <%= f.label :password_confirmation, "Confirmar password", class: "form-label" %>
+            <%= f.password_field :password_confirmation, class: "form-control" %>
+        </div>
+            
+        <div class="form-group">
+            <%= f.submit "Grabar", class: "btn btn-primary" %>
+        </div>
+    </div>
+</div>
 
-  <div class="actions">
-    <%= f.submit %>
-  </div>
 <% end %>
